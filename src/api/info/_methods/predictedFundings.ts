@@ -68,6 +68,9 @@ export const PredictedFundingsResponse = /* @__PURE__ */ (() => {
 })();
 export type PredictedFundingsResponse = v.InferOutput<typeof PredictedFundingsResponse>;
 
+/** Parameters for `predictedFundings` (none) */
+export type PredictedFundingsParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -99,10 +102,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function predictedFundings(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: PredictedFundingsParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<PredictedFundingsResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(PredictedFundingsRequest, {
     type: "predictedFundings",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

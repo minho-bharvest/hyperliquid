@@ -121,6 +121,9 @@ export const ValidatorSummariesResponse = /* @__PURE__ */ (() => {
 })();
 export type ValidatorSummariesResponse = v.InferOutput<typeof ValidatorSummariesResponse>;
 
+/** Parameters for `validatorSummaries` (none) */
+export type ValidatorSummariesParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -150,10 +153,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function validatorSummaries(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: ValidatorSummariesParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<ValidatorSummariesResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(ValidatorSummariesRequest, {
     type: "validatorSummaries",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

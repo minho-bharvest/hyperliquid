@@ -179,7 +179,6 @@ export function spotMeta(
 ): Promise<SpotMetaResponse> {
   const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
   const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
-
   const request = v.parse(SpotMetaRequest, {
     type: "spotMeta",
     ...params,

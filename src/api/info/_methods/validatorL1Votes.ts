@@ -61,6 +61,9 @@ export const ValidatorL1VotesResponse = /* @__PURE__ */ (() => {
 })();
 export type ValidatorL1VotesResponse = v.InferOutput<typeof ValidatorL1VotesResponse>;
 
+/** Parameters for `validatorL1Votes` (none) */
+export type ValidatorL1VotesParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -90,10 +93,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function validatorL1Votes(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: ValidatorL1VotesParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<ValidatorL1VotesResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(ValidatorL1VotesRequest, {
     type: "validatorL1Votes",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

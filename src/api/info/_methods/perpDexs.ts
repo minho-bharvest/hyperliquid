@@ -100,6 +100,9 @@ export const PerpDexsResponse = /* @__PURE__ */ (() => {
 })();
 export type PerpDexsResponse = v.InferOutput<typeof PerpDexsResponse>;
 
+/** Parameters for `perpDexs` (none) */
+export type PerpDexsParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -131,10 +134,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function perpDexs(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: PerpDexsParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<PerpDexsResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(PerpDexsRequest, {
     type: "perpDexs",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

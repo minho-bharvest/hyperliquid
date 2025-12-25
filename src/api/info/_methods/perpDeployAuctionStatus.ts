@@ -62,6 +62,9 @@ export const PerpDeployAuctionStatusResponse = /* @__PURE__ */ (() => {
 })();
 export type PerpDeployAuctionStatusResponse = v.InferOutput<typeof PerpDeployAuctionStatusResponse>;
 
+/** Parameters for `perpDeployAuctionStatus` (none) */
+export type PerpDeployAuctionStatusParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -93,10 +96,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function perpDeployAuctionStatus(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: PerpDeployAuctionStatusParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<PerpDeployAuctionStatusResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(PerpDeployAuctionStatusRequest, {
     type: "perpDeployAuctionStatus",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

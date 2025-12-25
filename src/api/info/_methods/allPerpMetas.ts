@@ -23,6 +23,9 @@ export const AllPerpMetasRequest = /* @__PURE__ */ (() => {
 })();
 export type AllPerpMetasRequest = v.InferOutput<typeof AllPerpMetasRequest>;
 
+/** Parameters for `allPerpMetas` (none) */
+export type AllPerpMetasParameters = Record<string, never>;
+
 /**
  * Metadata for perpetual assets across all DEXes.
  */
@@ -63,10 +66,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function allPerpMetas(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: AllPerpMetasParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<AllPerpMetasResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(AllPerpMetasRequest, {
     type: "allPerpMetas",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

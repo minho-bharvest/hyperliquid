@@ -15,7 +15,7 @@ import {
   type AlignedQuoteTokenInfoResponse,
 } from "./_methods/alignedQuoteTokenInfo.ts";
 import { allMids, type AllMidsParameters, type AllMidsResponse } from "./_methods/allMids.ts";
-import { allPerpMetas, type AllPerpMetasResponse } from "./_methods/allPerpMetas.ts";
+import { allPerpMetas, type AllPerpMetasParameters, type AllPerpMetasResponse } from "./_methods/allPerpMetas.ts";
 import { blockDetails, type BlockDetailsParameters, type BlockDetailsResponse } from "./_methods/blockDetails.ts";
 import {
   candleSnapshot,
@@ -43,7 +43,11 @@ import {
   type DelegatorSummaryParameters,
   type DelegatorSummaryResponse,
 } from "./_methods/delegatorSummary.ts";
-import { exchangeStatus, type ExchangeStatusResponse } from "./_methods/exchangeStatus.ts";
+import {
+  exchangeStatus,
+  type ExchangeStatusParameters,
+  type ExchangeStatusResponse,
+} from "./_methods/exchangeStatus.ts";
 import { extraAgents, type ExtraAgentsParameters, type ExtraAgentsResponse } from "./_methods/extraAgents.ts";
 import {
   frontendOpenOrders,
@@ -55,7 +59,7 @@ import {
   type FundingHistoryParameters,
   type FundingHistoryResponse,
 } from "./_methods/fundingHistory.ts";
-import { gossipRootIps, type GossipRootIpsResponse } from "./_methods/gossipRootIps.ts";
+import { gossipRootIps, type GossipRootIpsParameters, type GossipRootIpsResponse } from "./_methods/gossipRootIps.ts";
 import {
   historicalOrders,
   type HistoricalOrdersParameters,
@@ -65,10 +69,14 @@ import { isVip, type IsVipParameters, type IsVipResponse } from "./_methods/isVi
 import { l2Book, type L2BookParameters, type L2BookResponse } from "./_methods/l2Book.ts";
 import { leadingVaults, type LeadingVaultsParameters, type LeadingVaultsResponse } from "./_methods/leadingVaults.ts";
 import { legalCheck, type LegalCheckParameters, type LegalCheckResponse } from "./_methods/legalCheck.ts";
-import { liquidatable, type LiquidatableResponse } from "./_methods/liquidatable.ts";
+import { liquidatable, type LiquidatableParameters, type LiquidatableResponse } from "./_methods/liquidatable.ts";
 import { marginTable, type MarginTableParameters, type MarginTableResponse } from "./_methods/marginTable.ts";
 import { maxBuilderFee, type MaxBuilderFeeParameters, type MaxBuilderFeeResponse } from "./_methods/maxBuilderFee.ts";
-import { maxMarketOrderNtls, type MaxMarketOrderNtlsResponse } from "./_methods/maxMarketOrderNtls.ts";
+import {
+  maxMarketOrderNtls,
+  type MaxMarketOrderNtlsParameters,
+  type MaxMarketOrderNtlsResponse,
+} from "./_methods/maxMarketOrderNtls.ts";
 import { meta, type MetaParameters, type MetaResponse } from "./_methods/meta.ts";
 import {
   metaAndAssetCtxs,
@@ -77,9 +85,13 @@ import {
 } from "./_methods/metaAndAssetCtxs.ts";
 import { openOrders, type OpenOrdersParameters, type OpenOrdersResponse } from "./_methods/openOrders.ts";
 import { orderStatus, type OrderStatusParameters, type OrderStatusResponse } from "./_methods/orderStatus.ts";
-import { perpDeployAuctionStatus, type PerpDeployAuctionStatusResponse } from "./_methods/perpDeployAuctionStatus.ts";
+import {
+  perpDeployAuctionStatus,
+  type PerpDeployAuctionStatusParameters,
+  type PerpDeployAuctionStatusResponse,
+} from "./_methods/perpDeployAuctionStatus.ts";
 import { perpDexLimits, type PerpDexLimitsParameters, type PerpDexLimitsResponse } from "./_methods/perpDexLimits.ts";
-import { perpDexs, type PerpDexsResponse } from "./_methods/perpDexs.ts";
+import { perpDexs, type PerpDexsParameters, type PerpDexsResponse } from "./_methods/perpDexs.ts";
 import { perpDexStatus, type PerpDexStatusParameters, type PerpDexStatusResponse } from "./_methods/perpDexStatus.ts";
 import {
   perpsAtOpenInterestCap,
@@ -87,7 +99,11 @@ import {
   type PerpsAtOpenInterestCapResponse,
 } from "./_methods/perpsAtOpenInterestCap.ts";
 import { portfolio, type PortfolioParameters, type PortfolioResponse } from "./_methods/portfolio.ts";
-import { predictedFundings, type PredictedFundingsResponse } from "./_methods/predictedFundings.ts";
+import {
+  predictedFundings,
+  type PredictedFundingsParameters,
+  type PredictedFundingsResponse,
+} from "./_methods/predictedFundings.ts";
 import {
   preTransferCheck,
   type PreTransferCheckParameters,
@@ -106,9 +122,14 @@ import {
   type SpotDeployStateResponse,
 } from "./_methods/spotDeployState.ts";
 import { spotMeta, type SpotMetaParameters, type SpotMetaResponse } from "./_methods/spotMeta.ts";
-import { spotMetaAndAssetCtxs, type SpotMetaAndAssetCtxsResponse } from "./_methods/spotMetaAndAssetCtxs.ts";
+import {
+  spotMetaAndAssetCtxs,
+  type SpotMetaAndAssetCtxsParameters,
+  type SpotMetaAndAssetCtxsResponse,
+} from "./_methods/spotMetaAndAssetCtxs.ts";
 import {
   spotPairDeployAuctionStatus,
+  type SpotPairDeployAuctionStatusParameters,
   type SpotPairDeployAuctionStatusResponse,
 } from "./_methods/spotPairDeployAuctionStatus.ts";
 import { subAccounts, type SubAccountsParameters, type SubAccountsResponse } from "./_methods/subAccounts.ts";
@@ -157,10 +178,22 @@ import {
   type UserVaultEquitiesParameters,
   type UserVaultEquitiesResponse,
 } from "./_methods/userVaultEquities.ts";
-import { validatorL1Votes, type ValidatorL1VotesResponse } from "./_methods/validatorL1Votes.ts";
-import { validatorSummaries, type ValidatorSummariesResponse } from "./_methods/validatorSummaries.ts";
+import {
+  validatorL1Votes,
+  type ValidatorL1VotesParameters,
+  type ValidatorL1VotesResponse,
+} from "./_methods/validatorL1Votes.ts";
+import {
+  validatorSummaries,
+  type ValidatorSummariesParameters,
+  type ValidatorSummariesResponse,
+} from "./_methods/validatorSummaries.ts";
 import { vaultDetails, type VaultDetailsParameters, type VaultDetailsResponse } from "./_methods/vaultDetails.ts";
-import { vaultSummaries, type VaultSummariesResponse } from "./_methods/vaultSummaries.ts";
+import {
+  vaultSummaries,
+  type VaultSummariesParameters,
+  type VaultSummariesResponse,
+} from "./_methods/vaultSummaries.ts";
 import { webData2, type WebData2Parameters, type WebData2Response } from "./_methods/webData2.ts";
 
 // =============================================================
@@ -228,9 +261,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link allPerpMetas} */
   allPerpMetas(
+    params?: AllPerpMetasParameters,
     signal?: AbortSignal,
+  ): Promise<AllPerpMetasResponse>;
+  allPerpMetas(
+    signal?: AbortSignal,
+  ): Promise<AllPerpMetasResponse>;
+  allPerpMetas(
+    paramsOrSignal?: AllPerpMetasParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<AllPerpMetasResponse> {
-    return allPerpMetas(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return allPerpMetas(this.config_, params, signal);
   }
 
   /** @see {@link blockDetails} */
@@ -291,9 +334,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link exchangeStatus} */
   exchangeStatus(
+    params?: ExchangeStatusParameters,
     signal?: AbortSignal,
+  ): Promise<ExchangeStatusResponse>;
+  exchangeStatus(
+    signal?: AbortSignal,
+  ): Promise<ExchangeStatusResponse>;
+  exchangeStatus(
+    paramsOrSignal?: ExchangeStatusParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<ExchangeStatusResponse> {
-    return exchangeStatus(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return exchangeStatus(this.config_, params, signal);
   }
 
   /** @see {@link extraAgents} */
@@ -322,9 +375,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link gossipRootIps} */
   gossipRootIps(
+    params?: GossipRootIpsParameters,
     signal?: AbortSignal,
+  ): Promise<GossipRootIpsResponse>;
+  gossipRootIps(
+    signal?: AbortSignal,
+  ): Promise<GossipRootIpsResponse>;
+  gossipRootIps(
+    paramsOrSignal?: GossipRootIpsParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<GossipRootIpsResponse> {
-    return gossipRootIps(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return gossipRootIps(this.config_, params, signal);
   }
 
   /** @see {@link historicalOrders} */
@@ -369,9 +432,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link liquidatable} */
   liquidatable(
+    params?: LiquidatableParameters,
     signal?: AbortSignal,
+  ): Promise<LiquidatableResponse>;
+  liquidatable(
+    signal?: AbortSignal,
+  ): Promise<LiquidatableResponse>;
+  liquidatable(
+    paramsOrSignal?: LiquidatableParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<LiquidatableResponse> {
-    return liquidatable(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return liquidatable(this.config_, params, signal);
   }
 
   /** @see {@link marginTable} */
@@ -392,9 +465,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link maxMarketOrderNtls} */
   maxMarketOrderNtls(
+    params?: MaxMarketOrderNtlsParameters,
     signal?: AbortSignal,
+  ): Promise<MaxMarketOrderNtlsResponse>;
+  maxMarketOrderNtls(
+    signal?: AbortSignal,
+  ): Promise<MaxMarketOrderNtlsResponse>;
+  maxMarketOrderNtls(
+    paramsOrSignal?: MaxMarketOrderNtlsParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<MaxMarketOrderNtlsResponse> {
-    return maxMarketOrderNtls(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return maxMarketOrderNtls(this.config_, params, signal);
   }
 
   /** @see {@link meta} */
@@ -449,9 +532,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link perpDeployAuctionStatus} */
   perpDeployAuctionStatus(
+    params?: PerpDeployAuctionStatusParameters,
     signal?: AbortSignal,
+  ): Promise<PerpDeployAuctionStatusResponse>;
+  perpDeployAuctionStatus(
+    signal?: AbortSignal,
+  ): Promise<PerpDeployAuctionStatusResponse>;
+  perpDeployAuctionStatus(
+    paramsOrSignal?: PerpDeployAuctionStatusParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<PerpDeployAuctionStatusResponse> {
-    return perpDeployAuctionStatus(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return perpDeployAuctionStatus(this.config_, params, signal);
   }
 
   /** @see {@link perpDexLimits} */
@@ -464,9 +557,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link perpDexs} */
   perpDexs(
+    params?: PerpDexsParameters,
     signal?: AbortSignal,
+  ): Promise<PerpDexsResponse>;
+  perpDexs(
+    signal?: AbortSignal,
+  ): Promise<PerpDexsResponse>;
+  perpDexs(
+    paramsOrSignal?: PerpDexsParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<PerpDexsResponse> {
-    return perpDexs(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return perpDexs(this.config_, params, signal);
   }
 
   /** @see {@link perpDexStatus} */
@@ -504,9 +607,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link predictedFundings} */
   predictedFundings(
+    params?: PredictedFundingsParameters,
     signal?: AbortSignal,
+  ): Promise<PredictedFundingsResponse>;
+  predictedFundings(
+    signal?: AbortSignal,
+  ): Promise<PredictedFundingsResponse>;
+  predictedFundings(
+    paramsOrSignal?: PredictedFundingsParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<PredictedFundingsResponse> {
-    return predictedFundings(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return predictedFundings(this.config_, params, signal);
   }
 
   /** @see {@link preTransferCheck} */
@@ -568,16 +681,36 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link spotMetaAndAssetCtxs} */
   spotMetaAndAssetCtxs(
+    params?: SpotMetaAndAssetCtxsParameters,
     signal?: AbortSignal,
+  ): Promise<SpotMetaAndAssetCtxsResponse>;
+  spotMetaAndAssetCtxs(
+    signal?: AbortSignal,
+  ): Promise<SpotMetaAndAssetCtxsResponse>;
+  spotMetaAndAssetCtxs(
+    paramsOrSignal?: SpotMetaAndAssetCtxsParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<SpotMetaAndAssetCtxsResponse> {
-    return spotMetaAndAssetCtxs(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return spotMetaAndAssetCtxs(this.config_, params, signal);
   }
 
   /** @see {@link spotPairDeployAuctionStatus} */
   spotPairDeployAuctionStatus(
+    params?: SpotPairDeployAuctionStatusParameters,
     signal?: AbortSignal,
+  ): Promise<SpotPairDeployAuctionStatusResponse>;
+  spotPairDeployAuctionStatus(
+    signal?: AbortSignal,
+  ): Promise<SpotPairDeployAuctionStatusResponse>;
+  spotPairDeployAuctionStatus(
+    paramsOrSignal?: SpotPairDeployAuctionStatusParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<SpotPairDeployAuctionStatusResponse> {
-    return spotPairDeployAuctionStatus(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return spotPairDeployAuctionStatus(this.config_, params, signal);
   }
 
   /** @see {@link subAccounts} */
@@ -726,16 +859,36 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link validatorL1Votes} */
   validatorL1Votes(
+    params?: ValidatorL1VotesParameters,
     signal?: AbortSignal,
+  ): Promise<ValidatorL1VotesResponse>;
+  validatorL1Votes(
+    signal?: AbortSignal,
+  ): Promise<ValidatorL1VotesResponse>;
+  validatorL1Votes(
+    paramsOrSignal?: ValidatorL1VotesParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<ValidatorL1VotesResponse> {
-    return validatorL1Votes(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return validatorL1Votes(this.config_, params, signal);
   }
 
   /** @see {@link validatorSummaries} */
   validatorSummaries(
+    params?: ValidatorSummariesParameters,
     signal?: AbortSignal,
+  ): Promise<ValidatorSummariesResponse>;
+  validatorSummaries(
+    signal?: AbortSignal,
+  ): Promise<ValidatorSummariesResponse>;
+  validatorSummaries(
+    paramsOrSignal?: ValidatorSummariesParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<ValidatorSummariesResponse> {
-    return validatorSummaries(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return validatorSummaries(this.config_, params, signal);
   }
 
   /** @see {@link vaultDetails} */
@@ -748,9 +901,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link vaultSummaries} */
   vaultSummaries(
+    params?: VaultSummariesParameters,
     signal?: AbortSignal,
+  ): Promise<VaultSummariesResponse>;
+  vaultSummaries(
+    signal?: AbortSignal,
+  ): Promise<VaultSummariesResponse>;
+  vaultSummaries(
+    paramsOrSignal?: VaultSummariesParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<VaultSummariesResponse> {
-    return vaultSummaries(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return vaultSummaries(this.config_, params, signal);
   }
 
   /** @see {@link webData2} */

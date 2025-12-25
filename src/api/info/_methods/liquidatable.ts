@@ -32,6 +32,9 @@ export const LiquidatableResponse = /* @__PURE__ */ (() => {
 })();
 export type LiquidatableResponse = v.InferOutput<typeof LiquidatableResponse>;
 
+/** Parameters for `liquidatable` (none) */
+export type LiquidatableParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -61,10 +64,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function liquidatable(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: LiquidatableParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<LiquidatableResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(LiquidatableRequest, {
     type: "liquidatable",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

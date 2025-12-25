@@ -73,6 +73,9 @@ export const VaultSummariesResponse = /* @__PURE__ */ (() => {
 })();
 export type VaultSummariesResponse = v.InferOutput<typeof VaultSummariesResponse>;
 
+/** Parameters for `vaultSummaries` (none) */
+export type VaultSummariesParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -102,10 +105,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function vaultSummaries(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: VaultSummariesParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<VaultSummariesResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(VaultSummariesRequest, {
     type: "vaultSummaries",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

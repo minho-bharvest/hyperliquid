@@ -32,6 +32,9 @@ export const GossipRootIpsResponse = /* @__PURE__ */ (() => {
 })();
 export type GossipRootIpsResponse = v.InferOutput<typeof GossipRootIpsResponse>;
 
+/** Parameters for `gossipRootIps` (none) */
+export type GossipRootIpsParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -61,10 +64,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function gossipRootIps(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: GossipRootIpsParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<GossipRootIpsResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(GossipRootIpsRequest, {
     type: "gossipRootIps",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

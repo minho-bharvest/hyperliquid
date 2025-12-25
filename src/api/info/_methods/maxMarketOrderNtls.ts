@@ -36,6 +36,9 @@ export const MaxMarketOrderNtlsResponse = /* @__PURE__ */ (() => {
 })();
 export type MaxMarketOrderNtlsResponse = v.InferOutput<typeof MaxMarketOrderNtlsResponse>;
 
+/** Parameters for `maxMarketOrderNtls` (none) */
+export type MaxMarketOrderNtlsParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -65,10 +68,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function maxMarketOrderNtls(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: MaxMarketOrderNtlsParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<MaxMarketOrderNtlsResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(MaxMarketOrderNtlsRequest, {
     type: "maxMarketOrderNtls",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

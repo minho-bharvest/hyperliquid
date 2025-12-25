@@ -40,6 +40,9 @@ export const SpotMetaAndAssetCtxsResponse = /* @__PURE__ */ (() => {
 })();
 export type SpotMetaAndAssetCtxsResponse = v.InferOutput<typeof SpotMetaAndAssetCtxsResponse>;
 
+/** Parameters for `spotMetaAndAssetCtxs` (none) */
+export type SpotMetaAndAssetCtxsParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -71,10 +74,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function spotMetaAndAssetCtxs(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: SpotMetaAndAssetCtxsParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<SpotMetaAndAssetCtxsResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(SpotMetaAndAssetCtxsRequest, {
     type: "spotMetaAndAssetCtxs",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

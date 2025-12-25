@@ -36,6 +36,9 @@ export const SpotPairDeployAuctionStatusResponse = /* @__PURE__ */ (() => {
 })();
 export type SpotPairDeployAuctionStatusResponse = v.InferOutput<typeof SpotPairDeployAuctionStatusResponse>;
 
+/** Parameters for `spotPairDeployAuctionStatus` (none) */
+export type SpotPairDeployAuctionStatusParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -67,10 +70,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function spotPairDeployAuctionStatus(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: SpotPairDeployAuctionStatusParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<SpotPairDeployAuctionStatusResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(SpotPairDeployAuctionStatusRequest, {
     type: "spotPairDeployAuctionStatus",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

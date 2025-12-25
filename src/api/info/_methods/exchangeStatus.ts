@@ -45,6 +45,9 @@ export const ExchangeStatusResponse = /* @__PURE__ */ (() => {
 })();
 export type ExchangeStatusResponse = v.InferOutput<typeof ExchangeStatusResponse>;
 
+/** Parameters for `exchangeStatus` (none) */
+export type ExchangeStatusParameters = Record<string, never>;
+
 // ============================================================
 // Execution Logic
 // ============================================================
@@ -74,10 +77,14 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function exchangeStatus(
   config: InfoConfig,
-  signal?: AbortSignal,
+  paramsOrSignal?: ExchangeStatusParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<ExchangeStatusResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
   const request = v.parse(ExchangeStatusRequest, {
     type: "exchangeStatus",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }
