@@ -47,14 +47,14 @@ try {
   await build({
     entryPoints: [
       ...Object.entries(denoJson.exports).map(([k, v]) => ({ name: k, path: v })),
-      { name: "@nktkas/hyperliquid", path: "./bin/cli.ts", kind: "bin" },
+      { name: "@minho-bharvest/hyperliquid", path: "./bin/cli.ts", kind: "bin" },
     ],
     outDir: "./build/npm",
     shims: {},
     typeCheck: "both",
     test: false,
     package: {
-      name: "@nktkas/hyperliquid",
+      name: "@minho-bharvest/hyperliquid",
       version: denoJson.version,
       description: "Hyperliquid API SDK for all major JS runtimes, written in TypeScript.",
       keywords: [
@@ -71,13 +71,13 @@ try {
         "dex",
         "hyperliquid",
       ],
-      homepage: "https://github.com/nktkas/hyperliquid",
+      homepage: "https://github.com/minho-bharvest/hyperliquid",
       bugs: {
-        url: "https://github.com/nktkas/hyperliquid/issues",
+        url: "https://github.com/minho-bharvest/hyperliquid/issues",
       },
       repository: {
         type: "git",
-        url: "git+https://github.com/nktkas/hyperliquid.git",
+        url: "git+https://github.com/minho-bharvest/hyperliquid.git",
       },
       license: "MIT",
       author: {
