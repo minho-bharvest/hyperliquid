@@ -137,6 +137,9 @@ export type SpotMetaResponse = v.InferOutput<typeof SpotMetaResponse>;
 
 import type { InfoConfig } from "./_base/types.ts";
 
+/** Request parameters for the {@linkcode meta} function. */
+export type SpotMetaParameters = Omit<v.InferInput<typeof SpotMetaRequest>, "type">;
+
 /**
  * Request spot trading metadata.
  *
@@ -162,10 +165,24 @@ import type { InfoConfig } from "./_base/types.ts";
  */
 export function spotMeta(
   config: InfoConfig,
+  params?: SpotMetaParameters,
   signal?: AbortSignal,
+): Promise<SpotMetaResponse>;
+export function spotMeta(
+  config: InfoConfig,
+  signal?: AbortSignal,
+): Promise<SpotMetaResponse>;
+export function spotMeta(
+  config: InfoConfig,
+  paramsOrSignal?: SpotMetaParameters | AbortSignal,
+  maybeSignal?: AbortSignal,
 ): Promise<SpotMetaResponse> {
+  const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+  const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+
   const request = v.parse(SpotMetaRequest, {
     type: "spotMeta",
+    ...params,
   });
   return config.transport.request("info", request, signal);
 }

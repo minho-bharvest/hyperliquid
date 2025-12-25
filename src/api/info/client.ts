@@ -105,7 +105,7 @@ import {
   type SpotDeployStateParameters,
   type SpotDeployStateResponse,
 } from "./_methods/spotDeployState.ts";
-import { spotMeta, type SpotMetaResponse } from "./_methods/spotMeta.ts";
+import { spotMeta, type SpotMetaParameters, type SpotMetaResponse } from "./_methods/spotMeta.ts";
 import { spotMetaAndAssetCtxs, type SpotMetaAndAssetCtxsResponse } from "./_methods/spotMetaAndAssetCtxs.ts";
 import {
   spotPairDeployAuctionStatus,
@@ -551,9 +551,19 @@ export class InfoClient<C extends InfoConfig = InfoConfig> {
 
   /** @see {@link spotMeta} */
   spotMeta(
+    params?: SpotMetaParameters,
     signal?: AbortSignal,
+  ): Promise<SpotMetaResponse>;
+  spotMeta(
+    signal?: AbortSignal,
+  ): Promise<SpotMetaResponse>;
+  spotMeta(
+    paramsOrSignal?: SpotMetaParameters | AbortSignal,
+    maybeSignal?: AbortSignal,
   ): Promise<SpotMetaResponse> {
-    return spotMeta(this.config_, signal);
+    const params = paramsOrSignal instanceof AbortSignal ? {} : paramsOrSignal;
+    const signal = paramsOrSignal instanceof AbortSignal ? paramsOrSignal : maybeSignal;
+    return spotMeta(this.config_, params, signal);
   }
 
   /** @see {@link spotMetaAndAssetCtxs} */
